@@ -1,0 +1,21 @@
+{% extends "userModule/base.html" %}
+{% load static %}
+
+{% block title %}
+    Kitchens
+{% endblock %}
+
+{% block content %}
+    <div id="main" class="product-list">
+        <h1>Kitchens</h1>
+        {% for k in kitchens %}
+            <div class="item">
+                <a href="{{ k.get_absolute_url }}">
+                    <img src="{% if k.image %}{{ k.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                </a>
+                <a href="{{ k.get_absolute_url }}">{{ k.name }}</a><br>
+                ${{ k.price }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
