@@ -19,5 +19,6 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^', include(('userModule.urls','userModule'), namespace='userModule')),
+    re_path(r'^user/', include(('userModule.urls','userModule'), namespace='userModule')),
+    re_path(r'^', include(('serviceProviderApp.urls','serviceProviderApp'), namespace='serviceProviderApp')),
 ]
