@@ -23,4 +23,5 @@ class Kitchen(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('userModule:kitchen_detail', args=[self.id, self.slug])
+        #return reverse('userModule:kitchen_detail', args=[self.id, self.slug])
+        return reverse('userModule:kitchen_detail', args=[self.id])
