@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from userModule.models import Kitchen
+from cart.forms import CartAddProductForm
 
 # Create your views here.
 def kitchen_list(request):
@@ -16,6 +17,7 @@ def kitchen_list(request):
 def kitchen_detail(request, id):
     #product = get_object_or_404(Product, id=id, slug=slug, available=True)
     kitchen = get_object_or_404(Kitchen, id=id)
-    #cart_product_form = CartAddProductForm()
+    cart_product_form = CartAddProductForm()
     #return render(request,'shop/product/detail.html',{'product': kitchen,'cart_product_form': cart_product_form})
-    return render(request, 'userModule/kitchen_detail.html', {'product': kitchen})
+    return render(request, 'userModule/kitchen_detail.html', {'product': kitchen, 'cart_product_form': cart_product_form})
+    #return render(request, 'userModule/kitchen_detail.html', {'product': kitchen})
