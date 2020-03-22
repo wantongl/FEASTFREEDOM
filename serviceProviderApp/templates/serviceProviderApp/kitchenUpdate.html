@@ -1,4 +1,12 @@
 <form method="post">{% csrf_token %}
-    {{ form.as_p }}
+    {# {{ form.as_p }} #}
+    <b>&nbsp&nbsp&nbsp&nbsp&nbspDay&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStart Time&nbsp&nbspEnd Time</b><br>
+    Monday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.monday }}&nbsp{{ form.mondayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.mondayEndTime }}<br>
+    Tuesday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.tuesday }} {{ form.tuesdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.tuesdayEndTime }}<br>
+    Wednesday{{ form.wednesday }} {{ form.wednesdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.wednesdayEndTime }}<br>
+    Thursday&nbsp&nbsp&nbsp{{ form.thursday }} {{ form.thursdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.thursdayEndTime }}<br>
+    Friday&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.friday }} {{ form.fridayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.fridayEndTime }}<br>
+    Saturday&nbsp&nbsp&nbsp{{ form.saturday }} {{ form.saturdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.saturdayEndTime }}<br>
+    Sunday&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.sunday }} {{ form.sundayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.sundayEndTime }}<br>
     <input type="submit" value="Update">
 </form>
