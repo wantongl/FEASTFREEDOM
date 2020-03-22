@@ -1,6 +1,12 @@
 <form method="post">{% csrf_token %}
     {# {{ form.as_p }} #}
-    <b>Update Kitchen Work Schedule</b><br>
+    <b>Update Kitchen Details</b><br>
+    <br>
+    {{ form.image }}
+    <br>
+    {{ form.description }}
+    <br>
+    {{ form.menu }}
     <br>
     <b>&nbsp&nbsp&nbsp&nbsp&nbspDay&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStart Time&nbsp&nbspEnd Time</b><br>
     <hr>
