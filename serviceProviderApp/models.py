@@ -1,11 +1,20 @@
 from django.db import models
 
 # Create your models here.
+class menuItem(models.Model):
+    name=models.CharField(max_length=200,db_index=True,default='')
+    veg=models.BooleanField(default=False)
+    price=models.DecimalField(max_digits=10, decimal_places=2,db_index=True,default='')
+
+    def __str__(self):
+        return self.name
+
 class Kitchen2Register(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     email=models.CharField(max_length=50)
     image = models.ImageField(upload_to='kitchens/', blank=True)
     description = models.TextField(blank=True)
+    menu=models.ForeignKey(menuItem,on_delete=models.CASCADE,blank=True,null=True)
     TIMES_TO_WORK = [
         ('Tm1','8:00'),
         ('Tm2','8:30'),
@@ -28,7 +37,7 @@ class Kitchen2Register(models.Model):
         ('Tm19', '17:00'),
     ]
     monday = models.BooleanField(default=False)
-    mondayStartTime = models.CharField(max_length=4,choices=TIMES_TO_WORK,default='Tm2',)
+    mondayStartTime = models.CharField(max_length=4,choices=TIMES_TO_WORK,default='Tm1',)
     mondayEndTime = models.CharField(max_length=4, choices=TIMES_TO_WORK, default='Tm19', )
     tuesday=models.BooleanField(default=False)
     tuesdayStartTime = models.CharField(max_length=4, choices=TIMES_TO_WORK, default='Tm1', )
@@ -48,3 +57,6 @@ class Kitchen2Register(models.Model):
     sunday = models.BooleanField(default=False)
     sundayStartTime = models.CharField(max_length=4, choices=TIMES_TO_WORK, default='Tm1', )
     sundayEndTime = models.CharField(max_length=4, choices=TIMES_TO_WORK, default='Tm19', )
+
+    def __str__(self):
+        return self.name
