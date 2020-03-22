@@ -1,4 +1,22 @@
 <form method="post">{% csrf_token %}
-    {{ form.as_p }}
+    {# {{ form.as_p }} #}
+    <b>Update Kitchen Work Schedule</b><br>
+    <br>
+    <b>&nbsp&nbsp&nbsp&nbsp&nbspDay&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStart Time&nbsp&nbspEnd Time</b><br>
+    <hr>
+    Monday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.monday }}&nbsp{{ form.mondayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.mondayEndTime }}<br>
+    <hr>
+    Tuesday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.tuesday }} {{ form.tuesdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.tuesdayEndTime }}<br>
+    <hr>
+    Wednesday{{ form.wednesday }} {{ form.wednesdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.wednesdayEndTime }}<br>
+    <hr>
+    Thursday&nbsp&nbsp&nbsp{{ form.thursday }} {{ form.thursdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.thursdayEndTime }}<br>
+    <hr>
+    Friday&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.friday }} {{ form.fridayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.fridayEndTime }}<br>
+    <hr>
+    Saturday&nbsp&nbsp&nbsp{{ form.saturday }} {{ form.saturdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.saturdayEndTime }}<br>
+    <hr>
+    Sunday&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.sunday }} {{ form.sundayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.sundayEndTime }}<br>
+    <hr>
     <input type="submit" value="Update">
 </form>
