@@ -1,15 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
 from serviceProviderApp.models import Kitchen2Register
-<<<<<<< HEAD
 from django.http import HttpResponseRedirect
-
-=======
 from . import forms
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
->>>>>>> 771aa354d8f6bf0756e14a9b76047fe75ae293d2
+
 # Create your views here.
 
 def ProviderRegisterView(request):
