@@ -1,0 +1,17 @@
+{% extends 'myApp/base.html' %}
+
+{% block content %}
+<form method="POST">
+{% csrf_token %}
+
+{% for field in form %}
+
+{{ field.label }} {{ field }} {{ field.help_text }}
+<br>
+{% endfor %}
+
+
+<input type="submit" value='Next'>
+
+</form>
+{% endblock content %}
