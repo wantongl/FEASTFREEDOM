@@ -16,7 +16,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/myVirtEnv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.6 (myVirtEnv)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (FEASTFREEDOM)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="django_onlineShopping_website_development_new_2" />
   </component>
