@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 #from userModule.models import Kitchen
+from django.urls import reverse
 from serviceProviderApp.models import Kitchen2Register,menuItem
 from cart.forms import CartAddProductForm
 from django.views.generic.edit import CreateView
@@ -43,6 +44,17 @@ class createMenuItem(CreateView):
     fields=['name','veg','price']
     template_name = 'userModule/create_menuItem.html'
     success_url = '..'
+
+class createKitchen(CreateView):
+    model=Kitchen2Register
+    fields=['name','email']
+    template_name = 'serviceProviderApp/kitchenCreate.html'
+
+    def get_success_url(self):
+        return reverse('serviceProviderApp:kitchenUpdate', args=(self.object.id,))
+
+    success_url = get_success_url
+
 
 @login_required
 def logout(request):
