@@ -1,8 +1,12 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 #from userModule.models import Kitchen
 from serviceProviderApp.models import Kitchen2Register,menuItem
 from cart.forms import CartAddProductForm
 from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from userModule.forms import RegularUserCreation
 
 # Create your views here.
 def kitchen_list(request):
@@ -36,3 +40,23 @@ class createMenuItem(CreateView):
     fields=['name','veg','price']
     template_name = 'userModule/create_menuItem.html'
     success_url = '..'
+
+@login_required
+def logout(request):
+    logout(request)
+    return redirect('myApp:index')
+
+def signup(request):
+    if request.method == "POST":
+        form = RegularUserCreation(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # form.instance.username
+            username = form.cleaned_data.get('username')
+            raw_password = form.clean_password2()
+            user = authenticate(username=username,password=raw_password)
+            login(request,user)
+            return redirect('myApp:index')
+    else:
+        form = RegularUserCreation()
+    return render(request,'userModule/user_signup.html', {'form':form})

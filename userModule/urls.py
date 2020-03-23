@@ -1,11 +1,15 @@
-from django.conf.urls import url
+from django.urls import path, re_path
+from django.contrib.auth import views as auth_views
 from . import views
 from userModule.views import createMenuItem
 
 urlpatterns = [
-    url(r'^$', views.kitchen_list, name='kitchen_list'),
-    url(r'^(?P<id>\d+)/$', views.kitchen_detail, name='kitchen_detail'),
-    url(r'^(?P<id>\d+)/createMenuItem$', createMenuItem.as_view(), name='createMenuItem'),
+    re_path(r'^$', views.kitchen_list, name='kitchen_list'),
+    re_path(r'^(?P<id>\d+)/$', views.kitchen_detail, name='kitchen_detail'),
+    re_path(r'^(?P<id>\d+)/createMenuItem$', createMenuItem.as_view(), name='createMenuItem'),
+    path('signup/',views.signup,name='signup'),
+    path('login/', auth_views.LoginView.as_view(template_name='userModule/user_login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout')
     #url(r'^(?P<category_slug>[-\w]+)/$', views.product_list, name='product_list_by_category'),
     #url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.product_detail, name='product_detail'),
 ]
