@@ -1,13 +1,20 @@
 <form method="post">{% csrf_token %}
     {# {{ form.as_p }} #}
-    <b>Update Kitchen Details</b><br>
+    <h1>Update Kitchen Details</h1>
     <br>
+    <b>Image</b><br>
     {{ form.image }}
     <br>
+    <br>
+    <b>Description</b><br>
     {{ form.description }}
     <br>
-    {{ form.menu }} <a href="createMenuItem">Add</a>
     <br>
+    <b>Menu</b><br>
+    {{ form.menu }} <a href="createMenuItem">Add Menu Item</a>
+    <br>
+    <br>
+    <b>Hours of Operation</b><br>
     <b>&nbsp&nbsp&nbsp&nbsp&nbspDay&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStart Time&nbsp&nbspEnd Time</b><br>
     <hr>
     Monday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.monday }}&nbsp{{ form.mondayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.mondayEndTime }}<br>
