@@ -12,12 +12,12 @@
         <a href="/" class="logo">My shop</a>
         <a href="{% url 'serviceProviderApp:providersignup' %}" class="serviceProvider">Provider Register Now | </a>
         {% if user.is_authenticated %}
-            <a href="/">Logout | </a>
+            <a href="{% url 'userModule:logout' %}">Logout | </a>
             <a href="/">View Posts | </a>
             You Are Logged in As: {{ user.username }}
         {% else %}
-            <a href="/">Login | </a>
-            <a href="/">Signup</a>
+            <a href="{% url 'userModule:login' %}">Login | </a>
+            <a href="{% url 'userModule:signup' %}">Signup</a>
         {% endif %}
     </div>
     {{ Home_Text }}
