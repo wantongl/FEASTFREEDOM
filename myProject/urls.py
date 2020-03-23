@@ -23,7 +23,7 @@ urlpatterns = [
     re_path(r'^home/', include(('serviceProviderApp.urls','serviceProviderApp'), namespace='serviceProviderApp')),
     re_path(r'^home/user/', include(('userModule.urls','userModule'), namespace='userModule')),
     re_path(r'^cart/', include(('cart.urls','cart'), namespace='cart')),
-
+    url(r'^orders/', include(('orders.urls','orders'), namespace='orders')),
 ]
 
 if settings.DEBUG:

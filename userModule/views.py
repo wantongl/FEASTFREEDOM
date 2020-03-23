@@ -24,7 +24,7 @@ def kitchen_detail(request, id):
     #product = get_object_or_404(Product, id=id, slug=slug, available=True)
     kitchen = get_object_or_404(Kitchen2Register, id=id)
     #for t in kitchen.menu.all():
-    #    print(t.veg)
+    #    print(t.id)
     cart_product_form = CartAddProductForm()
     #return render(request,'shop/product/detail.html',{'product': kitchen,'cart_product_form': cart_product_form})
     return render(request, 'userModule/kitchen_detail.html', {'kitchen': kitchen, 'cart_product_form': cart_product_form})
