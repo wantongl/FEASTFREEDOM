@@ -7,10 +7,12 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
+from cart.cart import Cart
 
 # Create your views here.
 
 def ProviderRegisterView(request):
+    cart = Cart(request)
     if request.method == "POST":
         form = forms.ProviderRegisterForm(request.POST)
         if form.is_valid():
@@ -29,7 +31,7 @@ def ProviderRegisterView(request):
     else:
         form = forms.ProviderRegisterForm()
         #print("THERE")
-    return render(request, 'serviceProviderApp/providerSignUp.html', {'form': form})
+    return render(request, 'serviceProviderApp/providerSignUp.html', {'form': form,'cart':cart})
 
 class KitchenUpdate(UpdateView):
     model=Kitchen2Register

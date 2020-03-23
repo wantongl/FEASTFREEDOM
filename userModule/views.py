@@ -7,17 +7,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from userModule.forms import RegularUserCreation
+from cart.cart import Cart
 
 # Create your views here.
 def kitchen_list(request):
     #category = None
     #categories = Category.objects.all()
     k = Kitchen2Register.objects.all() #filter(available=True)
+    cart = Cart(request)
     #if category_slug:
     #    category = get_object_or_404(Category, slug=category_slug)
     #    products = products.filter(category=category)
     #return render(request, 'userModule/kitchen_list.html', {'category': category,'categories': categories,'products': products})
-    return render(request, 'userModule/kitchen_list.html',{'kitchens':k})
+    return render(request, 'userModule/kitchen_list.html',{'kitchens':k,'cart':cart})
 
 #def kitchen_detail(request, id, slug):
 def kitchen_detail(request, id):
@@ -26,8 +28,9 @@ def kitchen_detail(request, id):
     #for t in kitchen.menu.all():
     #    print(t.id)
     cart_product_form = CartAddProductForm()
+    cart = Cart(request)
     #return render(request,'shop/product/detail.html',{'product': kitchen,'cart_product_form': cart_product_form})
-    return render(request, 'userModule/kitchen_detail.html', {'kitchen': kitchen, 'cart_product_form': cart_product_form})
+    return render(request, 'userModule/kitchen_detail.html', {'kitchen': kitchen, 'cart_product_form': cart_product_form,'cart':cart})
     #return render(request, 'userModule/kitchen_detail.html', {'product': kitchen})
 
 #def createMenuItem(request,id):
