@@ -4,12 +4,7 @@
 <form method="POST">
 {% csrf_token %}
 
-{% for field in form %}
-
-{{ field.label }} {{ field }} {{ field.help_text }}
-<br>
-{% endfor %}
-
+{% include 'serviceProviderApp:forms.html' %}
 
 <input type="submit" value='Next'>
 
