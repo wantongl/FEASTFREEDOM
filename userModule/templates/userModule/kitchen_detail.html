@@ -15,7 +15,7 @@
         <b>{{ m.name }}</b><br>
             Vegetarian: {{ m.veg }}<br>
             ${{ m.price }}<br>
-            <form action="{% url "cart:cart_add" kitchen.id %}" method="post">
+            <form action="{% url "cart:cart_add" m.id %}" method="post">
                 {{ cart_product_form }}
                 {% csrf_token %}
                 <input type="submit" value="Add to cart">

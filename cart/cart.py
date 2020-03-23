@@ -1,7 +1,8 @@
 from decimal import Decimal
 from django.conf import settings
-from userModule.models import Kitchen as Product
+from serviceProviderApp.models import menuItem as Product
 from coupons.models import Coupon
+from django.shortcuts import get_object_or_404
 
 
 class Cart(object):
@@ -30,6 +31,7 @@ class Cart(object):
         Iterate over the items in the cart and get the products from the database.
         """
         product_ids = self.cart.keys()
+        print(product_ids)
         # get the product objects and add them to the cart
         products = Product.objects.filter(id__in=product_ids)
         for product in products:
@@ -45,9 +47,17 @@ class Cart(object):
         Add a product to the cart or update its quantity.
         """
         product_id = str(product.id)
+        #print(product_id)
+        #m=menuItem.objects.filter(id=product.id)
+        #m = get_object_or_404(menuItem, id=product.id)
+        m = get_object_or_404(Product, id=product.id)
+        #print(m.name)
+        #product_ids = self.cart.values()
+        #print(product_ids)
+        #for t in Product.menu.all():
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': 0,
-                                      'price': str(product.price)}
+                                      'price': str(m.price)}
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
