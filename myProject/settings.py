@@ -31,18 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
     'cart',
     'coupons',
     'myApp',
     'orders',
     'userModule',
     'serviceProviderApp',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+LOGIN_REDIRECT_URL = 'myApp:index'
+
+LOGOUT_REDIRECT_URL = 'myApp:index'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

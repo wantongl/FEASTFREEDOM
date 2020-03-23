@@ -13,8 +13,7 @@
         <a href="{% url 'serviceProviderApp:providersignup' %}" class="serviceProvider">Provider Register Now | </a>
         {% if user.is_authenticated %}
             <a href="{% url 'userModule:logout' %}">Logout | </a>
-            <a href="/">View Posts | </a>
-            You Are Logged in As: {{ user.username }}
+            You Are Logged in as: {{ user.username }}
         {% else %}
             <a href="{% url 'userModule:login' %}">Login | </a>
             <a href="{% url 'userModule:signup' %}">Signup</a>
