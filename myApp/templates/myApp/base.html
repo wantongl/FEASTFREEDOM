@@ -7,6 +7,7 @@
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
+
     <div id="header">
         <a href="/" class="logo">My shop</a>
         <a href="{% url 'serviceProviderApp:providersignup' %}" class="serviceProvider">Provider Register Now | </a>
@@ -19,6 +20,7 @@
             <a href="/">Signup</a>
         {% endif %}
     </div>
+    {{ Home_Text }}
     <div id="subheader">
         <div class="cart">
             {% with total_items=cart|length %}
