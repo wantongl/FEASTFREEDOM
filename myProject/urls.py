@@ -14,16 +14,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from django.conf.urls import url,include
+from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^home/user/', include(('userModule.urls','userModule'), namespace='userModule')),
+    re_path(r'^', include(('myApp.urls','myApp'), namespace='myApp')),
     re_path(r'^home/', include(('serviceProviderApp.urls','serviceProviderApp'), namespace='serviceProviderApp')),
-    url(r'^cart/', include(('cart.urls','cart'), namespace='cart')),
-    url(r'^home/', include(('myApp.urls','myApp'), namespace='myApp')),
+    re_path(r'^home/user/', include(('userModule.urls','userModule'), namespace='userModule')),
+    re_path(r'^cart/', include(('cart.urls','cart'), namespace='cart')),
+
 ]
 
 if settings.DEBUG:

@@ -4,4 +4,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-	return HttpResponse("Welcome to FEASTFREEDOM!  Be a Feast Beast!")
+	return render(request,'myApp/base.html', {'Home_Text': "Welcome to FEASTFREEDOM!  Be a Feast Beast!"})
