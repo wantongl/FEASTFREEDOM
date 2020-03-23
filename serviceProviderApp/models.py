@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class menuItem(models.Model):
@@ -14,7 +15,8 @@ class Kitchen2Register(models.Model):
     email=models.CharField(max_length=50)
     image = models.ImageField(upload_to='kitchens/', blank=True)
     description = models.TextField(blank=True)
-    menu=models.ForeignKey(menuItem,on_delete=models.CASCADE,blank=True,null=True)
+    #menu=models.ForeignKey(menuItem,on_delete=models.CASCADE,blank=True,null=True)
+    menu = models.ManyToManyField(menuItem)
     TIMES_TO_WORK = [
         ('Tm1','8:00'),
         ('Tm2','8:30'),
@@ -60,3 +62,6 @@ class Kitchen2Register(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('userModule:kitchen_detail', args=[self.id])

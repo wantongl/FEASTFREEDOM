@@ -7,15 +7,22 @@
 
 {% block content %}
     <div class="product-detail">
-        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-        <h1>{{ product.name }}</h1>
-        {# <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2> #}
-        {# <p class="price">${{ product.price }}</p> #}
-        <form action="{% url "cart:cart_add" product.id %}" method="post">
-            {{ cart_product_form }}
-            {% csrf_token %}
-            <input type="submit" value="Add to cart">
-        </form>
-        {{ product.description|linebreaks }}
+        <h1>{{ kitchen.name }} Menu</h1>
+        <img src="{% if kitchen.image %}{{ kitchen.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        {# <h2><a href="{{ kitchen.category.get_absolute_url }}">{{ kitchen.category }}</a></h2> #}
+        {# <p class="price">${{ kitchen.price }}</p> #}
+        {% for m in kitchen.menu.all %}
+        <b>{{ m.name }}</b><br>
+            Vegetarian: {{ m.veg }}<br>
+            ${{ m.price }}<br>
+            <form action="{% url "cart:cart_add" kitchen.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input type="submit" value="Add to cart">
+            </form>
+            <br>
+        {% endfor %}
+        <u>Description</u><br>
+        {{ kitchen.description|linebreaks }}
     </div>
 {% endblock %}
