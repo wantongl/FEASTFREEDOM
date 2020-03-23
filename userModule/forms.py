@@ -17,7 +17,6 @@ SECURITY_QUESTIONS = (
     ('11','What time of the day was your first child born? (hh:mm)'),
 )
 
-
 class RegularUserCreation(UserCreationForm):
     email = forms.EmailField(required=True)
 
