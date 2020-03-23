@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
 from serviceProviderApp.models import Kitchen2Register
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from . import forms
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -22,13 +22,13 @@ def ProviderRegisterView(request):
             raw_password = form.clean_password2()
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            print("HERE")
+            #print("HERE")
             return redirect('serviceProviderApp:kitchenUpdate')
         else:
             return HttpResponse("Form Invalid!  Can not register kitchen!")
     else:
         form = forms.ProviderRegisterForm()
-        print("THERE")
+        #print("THERE")
     return render(request, 'serviceProviderApp/providerSignUp.html', {'form': form})
 
 class KitchenUpdate(UpdateView):
@@ -42,4 +42,5 @@ class KitchenUpdate(UpdateView):
             url = '..' #self.get_success_url()
             return HttpResponseRedirect(url)
         else:
-            return super(KitchenUpdate, self).post(request, *args, **kwargs)
+            #return super(KitchenUpdate, self).post(request, *args, **kwargs)
+            return HttpResponse("Success!")

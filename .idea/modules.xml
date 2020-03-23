@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FEASTFREEDOM.iml" filepath="$PROJECT_DIR$/.idea/FEASTFREEDOM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Learning/Django_Day14/django_onlineShopping_website_development_new_2/.idea/django_onlineShopping_website_development_new_2.iml" filepath="$PROJECT_DIR$/../Learning/Django_Day14/django_onlineShopping_website_development_new_2/.idea/django_onlineShopping_website_development_new_2.iml" />
     </modules>
   </component>
 </project>
