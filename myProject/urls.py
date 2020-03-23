@@ -14,7 +14,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from django.conf.urls import include
+from django.conf.urls import include,url
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,7 +24,7 @@ urlpatterns = [
     re_path(r'^home/', include(('serviceProviderApp.urls','serviceProviderApp'), namespace='serviceProviderApp')),
     re_path(r'^home/user/', include(('userModule.urls','userModule'), namespace='userModule')),
     re_path(r'^cart/', include(('cart.urls','cart'), namespace='cart')),
-
+    url(r'^orders/', include(('orders.urls','orders'), namespace='orders')),
 ]
 
 if settings.DEBUG:

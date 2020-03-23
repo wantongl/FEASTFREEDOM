@@ -1,6 +1,6 @@
 import redis
 from django.conf import settings
-from .models import Kitchen as Product
+from serviceProviderApp.models import menuItem as Product
 
 
 # connect to redis
