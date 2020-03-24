@@ -17,7 +17,7 @@
         <h1>Menu</h1><br>
         {# <img src="{% if kitchen.image %}{{ kitchen.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> #}
         {% for m in kitchen.menu.all %}
-            <b>{{ m.name }}</b> <span style="color:blue">${{ m.price }}</span>
+            <b>{{ m.name }}</b> || <span style="color:blue">${{ m.price }}</span>
             {% if m.veg %}
                 <b><span style="color: green"><br>Vegetarian</span></b><br>
             {% endif %}
