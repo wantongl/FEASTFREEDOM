@@ -3,21 +3,21 @@
 {% block content %}
 <form method="post" enctype="multipart/form-data">{% csrf_token %}
     {# {{ form.as_p }} #}
-    <h1>Update Kitchen Details</h1>
+    <h1>Add Your Kitchen's Details</h1>
     <br>
-    <b>Image</b><br>
+    <b>Kitchen Image</b><br>
     {{ form.image }}
     <br>
     <br>
-    <b>Description</b><br>
+    <b>Description of Kitchen</b><br>
     {{ form.description }}
     <br>
     <br>
-    <b>Menu</b><br>
+    <b>Kitchen Menu</b><br>
     {{ form.menu }} <a href="createMenuItem">Add Menu Item</a>
     <br>
     <br>
-    <b>Hours of Operation</b><br>
+    <b>Hours of Operation</b><br><br>
     <b>&nbsp&nbsp&nbsp&nbsp&nbspDay&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStart Time&nbsp&nbspEnd Time</b><br>
     <hr>
     Monday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.monday }}&nbsp{{ form.mondayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.mondayEndTime }}<br>
