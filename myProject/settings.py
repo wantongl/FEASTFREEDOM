@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 # anonymous user can't make/edit kitchen
 # s3 bucket to store images
 # email sent by AWS lambda function if possible
+# allow view of all kitchens of a user
+# allow kitchen menu to be editable when user is kitchen provider
+# make each kitchen menu easier to edit
+
 
 # projectfeastfreedom@gmail.com
 # 3Y3un3xb
