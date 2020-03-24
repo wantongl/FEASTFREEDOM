@@ -29,7 +29,7 @@ def order_create(request):
             # launch asynchronous task
             #order_created.delay(order.id)
             order_created(order.id)
-            print("email sent")
+            #print("email sent")
             # set the order in the session
             request.session['order_id'] = order.id
             # redirect to the payment

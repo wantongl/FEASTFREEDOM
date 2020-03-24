@@ -44,7 +44,12 @@ class createMenuItem(CreateView):
     model=menuItem
     fields=['name','veg','price']
     template_name = 'userModule/create_menuItem.html'
-    success_url = '..'
+
+    def get_success_url(self):
+        k=Kitchen2Register.objects.latest('id')
+        return reverse('serviceProviderApp:kitchenUpdate', args=(k.id,))
+
+    success_url = get_success_url
 
 class createKitchen(CreateView):
     model=Kitchen2Register
@@ -53,7 +58,7 @@ class createKitchen(CreateView):
     template_name = 'serviceProviderApp/kitchenCreate.html'
 
     def get_success_url(self):
-        print(self.object.id)
+        #print(self.object.id)
         return reverse('serviceProviderApp:kitchenUpdate', args=(self.object.id,))
 
     def post(self, request, *args, **kwargs):
