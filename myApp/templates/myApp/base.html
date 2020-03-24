@@ -9,7 +9,7 @@
 <body>
 
     <div id="header">
-        <a href="/" class="logo">FEASTFREEDOM</a>
+        <a href="/" class="logo"><u>FEASTFREEDOM</u><br><b>Feast</b> like a <b>Beast</b></a>
         <a href="{% url 'serviceProviderApp:providersignup' %}" class="serviceProvider">Provider Register Now | </a>
         {% if user.is_authenticated %}
             <a href="{% url 'userModule:logout' %}">Logout | </a>
