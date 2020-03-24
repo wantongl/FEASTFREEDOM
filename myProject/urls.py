@@ -19,9 +19,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^home/', include(('myApp.urls','myApp'), namespace='myApp')),
-    re_path(r'^home/provider/', include(('serviceProviderApp.urls','serviceProviderApp'), namespace='serviceProviderApp')),
-    re_path(r'^home/user/', include(('userModule.urls','userModule'), namespace='userModule')),
+    re_path(r'^', include(('myApp.urls','myApp'), namespace='myApp')),
+    re_path(r'^provider/', include(('serviceProviderApp.urls','serviceProviderApp'), namespace='serviceProviderApp')),
+    re_path(r'^user/', include(('userModule.urls','userModule'), namespace='userModule')),
     re_path(r'^cart/', include(('cart.urls','cart'), namespace='cart')),
     re_path(r'^orders/', include(('orders.urls','orders'), namespace='orders')),
 ]
