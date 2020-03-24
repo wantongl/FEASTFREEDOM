@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
 from cart.cart import Cart
+from django.urls import reverse
 
 # Create your views here.
 
@@ -37,7 +38,6 @@ class KitchenUpdate(UpdateView):
     model=Kitchen2Register
     fields=['image','description','menu','monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondayStartTime','mondayEndTime','tuesdayStartTime','tuesdayEndTime','wednesdayStartTime','wednesdayEndTime','thursdayStartTime','thursdayEndTime','fridayStartTime','fridayEndTime','saturdayStartTime','saturdayEndTime','sundayStartTime','sundayEndTime']
     template_name = 'serviceProviderApp/kitchenUpdate.html'
-    success_url = '..'
 
     def post(self, request, *args, **kwargs):
         if "cancel" in request.POST:
@@ -46,3 +46,9 @@ class KitchenUpdate(UpdateView):
         else:
             return super(KitchenUpdate, self).post(request, *args, **kwargs)
             #return HttpResponse("Success!")
+            #k = Kitchen2Register.objects.all()  # filter(available=True)
+            #cart = Cart(request)
+            #return HttpResponseRedirect(reverse('userModule:kitchen_list',kwargs={'kitchens':k,'cart':cart}))
+            #return HttpResponseRedirect(reverse('userModule:kitchen_list'))
+
+    success_url = '../../user' #reverse('userModule:kitchen_list')
