@@ -11,5 +11,5 @@ def order_created(order_id):
     subject = 'Order nr. {}'.format(order.id)
     message = 'Dear {},\n\nYou have successfully placed an order. Your order id is {}.'.format(order.first_name,
                                                                              order.id)
-    mail_sent = send_mail(subject, message, 'danielrgrisham@gmail.com', [order.email],fail_silently=False,auth_user='projectfeastfreedom@gmail.com',auth_password='3Y3un3xb')
+    mail_sent = send_mail(subject, message, 'projectfeastfreedom@gmail.com', [order.email],fail_silently=False,auth_user='projectfeastfreedom@gmail.com',auth_password='3Y3un3xb')
     return mail_sent
