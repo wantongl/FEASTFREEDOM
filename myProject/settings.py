@@ -8,6 +8,12 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
+
+
+# anonymous user can't make/edit kitchen
+# s3 bucket to store images
+# email sent by AWS lambda function if possible
+
 """
 
 import os

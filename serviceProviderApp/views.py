@@ -41,7 +41,7 @@ class KitchenUpdate(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if "cancel" in request.POST:
-            url = '..' #self.get_success_url()
+            url = '../create' #self.get_success_url()
             return HttpResponseRedirect(url)
         else:
             return super(KitchenUpdate, self).post(request, *args, **kwargs)
