@@ -16,10 +16,17 @@
         </ul>
         <p>Total: ${{ cart.get_total_price }}</p>
     </div>
-    
-    <form action="." method="post" class="order-form">
-        {{ form.as_p }}
-        <p><input type="submit" value="Place order"></p>
-        {% csrf_token %}
-    </form>
+    {% if user.is_authenticated %}
+        <form action="." method="post" class="order-form">
+            {{ form.as_p }}
+            <p><input type="submit" value="Place order"></p>
+            {% csrf_token %}
+        </form>
+    {% else %}
+        You must login with an account to finish checking out.<br><br>
+        Please select one of the following options:<br>
+        <a href="{% url 'userModule:login' %}">Login | </a>
+        <a href="{% url 'userModule:signup' %}">Signup</a>
+    {% endif %}
+
 {% endblock %}
