@@ -9,6 +9,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from userModule.forms import RegularUserCreation
 from cart.cart import Cart
+from django.http import HttpResponseRedirect,HttpResponse
 
 # Create your views here.
 def kitchen_list(request):
@@ -47,11 +48,24 @@ class createMenuItem(CreateView):
 
 class createKitchen(CreateView):
     model=Kitchen2Register
+    #fields=['name','email','image','description','menu','monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondayStartTime','mondayEndTime','tuesdayStartTime','tuesdayEndTime','wednesdayStartTime','wednesdayEndTime','thursdayStartTime','thursdayEndTime','fridayStartTime','fridayEndTime','saturdayStartTime','saturdayEndTime','sundayStartTime','sundayEndTime']
     fields=['name','email']
     template_name = 'serviceProviderApp/kitchenCreate.html'
 
     def get_success_url(self):
+        print(self.object.id)
         return reverse('serviceProviderApp:kitchenUpdate', args=(self.object.id,))
+
+    def post(self, request, *args, **kwargs):
+        #   self.object=self.get_object(id=args)
+        if "cancel" in request.POST:
+            url = '..' #self.get_success_url()
+            return HttpResponseRedirect(url)
+        else:
+            return super(createKitchen, self).post(request, *args, **kwargs)
+            #return HttpResponse("Success!")
+            #url = self.get_success_url()#reverse('serviceProviderApp:kitchenUpdate', args=(self.object.id,))
+            #return HttpResponseRedirect(url)
 
     success_url = get_success_url
 
