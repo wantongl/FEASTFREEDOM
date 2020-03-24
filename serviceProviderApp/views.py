@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView,CreateView
 from serviceProviderApp.models import Kitchen2Register
 from django.http import HttpResponseRedirect,HttpResponse
 from . import forms
@@ -17,21 +17,21 @@ def ProviderRegisterView(request):
     if request.method == "POST":
         form = forms.ProviderRegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            # user = form.save()
             # form.instance.username
             username = form.cleaned_data.get('username')
             messages.success(request, f'Registered Success for {username}')
 
             raw_password = form.clean_password2()
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            #print("HERE")
-            return redirect('serviceProviderApp:kitchenUpdate')
+            #user = authenticate(username=username, password=raw_password)
+            user=form.save()
+            #login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('serviceProviderApp:kitchenCreate')
         else:
             return HttpResponse("Form Invalid!  Can not register kitchen!")
     else:
         form = forms.ProviderRegisterForm()
-        #print("THERE")
     return render(request, 'serviceProviderApp/providerSignUp.html', {'form': form,'cart':cart})
 
 class KitchenUpdate(UpdateView):
@@ -54,3 +54,29 @@ class KitchenUpdate(UpdateView):
             #return HttpResponseRedirect(reverse('userModule:kitchen_list'))
 
     success_url = '../../user' #reverse('userModule:kitchen_list')
+
+class registerKitchen(CreateView):
+    model=Kitchen2Register
+    fields=['username']
+    template_name='serviceProviderApp/providerSignUp.html'
+
+    def post(self, request, *args, **kwargs):
+        cart = Cart(request)
+        if request.method == "POST":
+            form = forms.ProviderRegisterForm(request.POST)
+            if form.is_valid():
+                # user = form.save()
+                # form.instance.username
+                username = form.cleaned_data.get('username')
+                messages.success(request, f'Registered Success for {username}')
+
+                raw_password = form.clean_password2()
+                user = authenticate(username=username, password=raw_password)
+                login(request, user)
+                return redirect('serviceProviderApp:kitchenUpdate')
+            else:
+                return HttpResponse("Form Invalid!  Can not register kitchen!")
+        else:
+            form = forms.ProviderRegisterForm()
+        return render(request, 'serviceProviderApp/providerSignUp.html', {'form': form, 'cart': cart})
+

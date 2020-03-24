@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 class menuItem(models.Model):
@@ -11,6 +12,7 @@ class menuItem(models.Model):
         return self.name
 
 class Kitchen2Register(models.Model):
+    username=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=200, db_index=True)
     email=models.CharField(max_length=50)
     image = models.ImageField(upload_to='kitchens/',blank=True)
