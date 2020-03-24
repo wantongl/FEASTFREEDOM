@@ -7,10 +7,15 @@
 
 {% block content %}
     <div class="product-detail">
-        <h1>{{ kitchen.name }} Menu</h1>
-        <img src="{% if kitchen.image %}{{ kitchen.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-        {# <h2><a href="{{ kitchen.category.get_absolute_url }}">{{ kitchen.category }}</a></h2> #}
-        {# <p class="price">${{ kitchen.price }}</p> #}
+        <br>
+        <form method="post">{% csrf_token %}
+            <input type="submit" name="cancel" value="Return to Kitchens">
+            <input name="next" type="hidden" value="{% url 'userModule:kitchen_list' %}">
+        </form>
+        <h1>{{ kitchen.name }}</h1>
+        {{ kitchen.description|linebreaks }}<br>
+        <h1>Menu</h1><br>
+        {# <img src="{% if kitchen.image %}{{ kitchen.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> #}
         {% for m in kitchen.menu.all %}
         <b>{{ m.name }}</b><br>
             Vegetarian: {{ m.veg }}<br>
@@ -22,7 +27,5 @@
             </form>
             <br>
         {% endfor %}
-        <u>Description</u><br>
-        {{ kitchen.description|linebreaks }}
     </div>
 {% endblock %}

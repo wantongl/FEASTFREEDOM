@@ -23,17 +23,18 @@ def kitchen_list(request):
     #return render(request, 'userModule/kitchen_list.html', {'category': category,'categories': categories,'products': products})
     return render(request, 'userModule/kitchen_list.html',{'kitchens':k,'cart':cart})
 
-#def kitchen_detail(request, id, slug):
 def kitchen_detail(request, id):
-    #product = get_object_or_404(Product, id=id, slug=slug, available=True)
     kitchen = get_object_or_404(Kitchen2Register, id=id)
     #for t in kitchen.menu.all():
     #    print(t.id)
     cart_product_form = CartAddProductForm()
     cart = Cart(request)
-    #return render(request,'shop/product/detail.html',{'product': kitchen,'cart_product_form': cart_product_form})
-    return render(request, 'userModule/kitchen_detail.html', {'kitchen': kitchen, 'cart_product_form': cart_product_form,'cart':cart})
-    #return render(request, 'userModule/kitchen_detail.html', {'product': kitchen})
+    if "cancel" in request.POST:
+        url='..'
+        return HttpResponseRedirect(url)
+    else:
+        #return render(request,'shop/product/detail.html',{'product': kitchen,'cart_product_form': cart_product_form})
+        return render(request, 'userModule/kitchen_detail.html', {'kitchen': kitchen, 'cart_product_form': cart_product_form,'cart':cart})
 
 #def createMenuItem(request,id):
 #    k=Kitchen2Register.objects.get(id)
