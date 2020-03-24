@@ -1,9 +1,16 @@
 {% extends 'serviceProviderApp/base.html' %}
 
 {% block content %}
+<form method="post">{% csrf_token %}
+    <br>
+    <input type="submit" name="return" value="Returning User?">
+    <input name="next" type="hidden" value="{% url 'serviceProviderApp:kitchenCreate' %}">
+</form>
+
 <form method="POST">
 {% csrf_token %}
-
+    <br>
+    <b>Register a New Kitchen Provider</b><br>
 {% include 'serviceProviderApp/forms.html' %}
 
 <input type="submit" value='Next'>

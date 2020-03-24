@@ -14,7 +14,9 @@ from django.urls import reverse
 
 def ProviderRegisterView(request):
     cart = Cart(request)
-    if request.method == "POST":
+    if "return" in request.POST:
+        return redirect('serviceProviderApp:kitchenCreate')
+    elif request.method == "POST":
         form = forms.ProviderRegisterForm(request.POST)
         if form.is_valid():
             # user = form.save()
