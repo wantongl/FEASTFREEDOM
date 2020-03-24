@@ -13,7 +13,7 @@ class menuItem(models.Model):
 class Kitchen2Register(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     email=models.CharField(max_length=50)
-    image = models.ImageField(upload_to='kitchens/', blank=True)
+    image = models.ImageField(upload_to='kitchens/',blank=True)
     description = models.TextField(blank=True)
     #menu=models.ForeignKey(menuItem,on_delete=models.CASCADE,blank=True,null=True)
     menu = models.ManyToManyField(menuItem)

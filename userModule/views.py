@@ -48,6 +48,7 @@ class createMenuItem(CreateView):
 
 class createKitchen(CreateView):
     model=Kitchen2Register
+    #fields=['name','email','image','description','menu','monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondayStartTime','mondayEndTime','tuesdayStartTime','tuesdayEndTime','wednesdayStartTime','wednesdayEndTime','thursdayStartTime','thursdayEndTime','fridayStartTime','fridayEndTime','saturdayStartTime','saturdayEndTime','sundayStartTime','sundayEndTime']
     fields=['name','email']
     template_name = 'serviceProviderApp/kitchenCreate.html'
 
