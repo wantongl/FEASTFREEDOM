@@ -40,7 +40,6 @@ def kitchen_detail(request, id):
 #    m=k.menu_set.create()
 
 class createMenuItem(CreateView):
-    #model=Kitchen2Register
     model=menuItem
     fields=['name','veg','price']
     template_name = 'userModule/create_menuItem.html'
@@ -90,7 +89,8 @@ def signup(request):
             raw_password = form.clean_password2()
             user = authenticate(username=username,password=raw_password)
             login(request,user)
-            return redirect('myApp:index')
+            #return redirect('myApp:index')
+            return redirect('userModule:kitchen_list')
     else:
         form = RegularUserCreation()
     return render(request,'userModule/user_signup.html', {'form':form})
