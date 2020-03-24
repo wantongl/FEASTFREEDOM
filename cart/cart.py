@@ -1,7 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
 from serviceProviderApp.models import menuItem as Product
-#from coupons.models import Coupon
 from django.shortcuts import get_object_or_404
 
 

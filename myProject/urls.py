@@ -15,6 +15,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.conf import settings
+from django.conf.urls import url
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -24,6 +25,8 @@ urlpatterns = [
     re_path(r'^user/', include(('userModule.urls','userModule'), namespace='userModule')),
     re_path(r'^cart/', include(('cart.urls','cart'), namespace='cart')),
     re_path(r'^orders/', include(('orders.urls','orders'), namespace='orders')),
+    url(r'^payment/', include(('payment.urls','payment'), namespace='payment')),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
 ]
 
 if settings.DEBUG:

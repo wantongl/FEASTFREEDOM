@@ -14,8 +14,10 @@ from cart.cart import Cart
 def order_create(request):
     cart = Cart(request)
     if request.method == 'POST':
+        #   print("POST")
         form = OrderCreateForm(request.POST)
         if form.is_valid():
+            #print("valid form")
             order = form.save()
             for item in cart:
                 OrderItem.objects.create(order=order,
@@ -25,7 +27,9 @@ def order_create(request):
             # clear the cart
             cart.clear()
             # launch asynchronous task
-            order_created.delay(order.id)
+            #order_created.delay(order.id)
+            order_created(order.id)
+            print("email sent")
             # set the order in the session
             request.session['order_id'] = order.id
             # redirect to the payment

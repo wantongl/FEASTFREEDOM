@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'cart',
     'myApp',
     'orders',
+    'payment',
+    'paypal.standard.ipn',
     'userModule',
     'serviceProviderApp',
     'django.contrib.admin',
@@ -139,3 +141,12 @@ CART_SESSION_ID = 'cart'
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1
+
+# Emailing Settings
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=465
+EMAIL_USE_SSL=True
+
+# django-paypal settings
+PAYPAL_RECEIVER_EMAIL = 'danielrgrisham@gmail.com'
+PAYPAL_TEST = True
