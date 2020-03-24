@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 # s3 bucket to store images
 # email sent by AWS lambda function if possible
 
+# projectfeastfreedom@gmail.com
+# 3Y3un3xb
 """
 
 import os

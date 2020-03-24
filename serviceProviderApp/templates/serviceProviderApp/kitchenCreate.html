@@ -1,15 +1,15 @@
-{% extends 'myApp/base.html' %}
+{% extends 'serviceProviderApp/base.html' %}
 
 {% block content %}
 <form method="post">{% csrf_token %}
     {# {{ form.as_p }} #}
-    <h1>Create a Kitchen</h1>
+    <h1>Register Your Kitchen</h1>
     <br>
-    <b>Name</b><br>
+    <b>Kitchen Name</b><br>
     {{ form.name }}
     <br>
     <br>
-    <b>Email</b><br>
+    <b>Kitchen Email</b><br>
     {{ form.email }}
     <br>
     <br>

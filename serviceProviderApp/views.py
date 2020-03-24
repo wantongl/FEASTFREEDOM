@@ -41,6 +41,8 @@ class KitchenUpdate(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if "cancel" in request.POST:
+            k = Kitchen2Register.objects.latest('id')
+            Kitchen2Register.objects.filter(id=k.id).delete()
             url = '../create' #self.get_success_url()
             return HttpResponseRedirect(url)
         else:
