@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>{% block title %}My shop{% endblock %}</title>
+    <title>{% block title %}FEASTFREEDOM{% endblock %}</title>
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
@@ -19,7 +19,6 @@
             <a href="{% url 'userModule:signup' %}">Signup</a>
         {% endif %}
     </div>
-    {{ Home_Text }}
     <div id="subheader">
         <div class="cart">
             {% with total_items=cart|length %}
@@ -34,6 +33,7 @@
             {% endwith %}
         </div>
     </div>
+    {{ Home_Text }}
     <div id="content">
         {% block content %}
         {% endblock %}
