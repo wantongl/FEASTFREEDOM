@@ -3,7 +3,7 @@ from django.shortcuts import render,get_object_or_404, redirect
 from django.urls import reverse
 from serviceProviderApp.models import Kitchen2Register,menuItem
 from cart.forms import CartAddProductForm
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,UpdateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -52,9 +52,10 @@ class createMenuItem(CreateView):
     success_url = get_success_url
 
 class createKitchen(CreateView):
+#class createKitchen(UpdateView):
     model=Kitchen2Register
     #fields=['name','email','image','description','menu','monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondayStartTime','mondayEndTime','tuesdayStartTime','tuesdayEndTime','wednesdayStartTime','wednesdayEndTime','thursdayStartTime','thursdayEndTime','fridayStartTime','fridayEndTime','saturdayStartTime','saturdayEndTime','sundayStartTime','sundayEndTime']
-    fields=['name','email']
+    fields=['username','name','email']
     template_name = 'serviceProviderApp/kitchenCreate.html'
 
     def get_success_url(self):
