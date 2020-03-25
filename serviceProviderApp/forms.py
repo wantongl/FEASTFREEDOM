@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from userModule.models import User
 from .models import Kitchen2Register
 
 class ProviderRegisterForm(UserCreationForm):
@@ -15,6 +15,7 @@ class ProviderRegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = super(ProviderRegisterForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
+        user.is_provider = True
         if commit:
             user.save()
         return user

@@ -1,6 +1,6 @@
 from django.db import models
 from serviceProviderApp.models import menuItem as Product
-
+from userModule.models import User
 
 class Order(models.Model):
     first_name = models.CharField(max_length=50)
