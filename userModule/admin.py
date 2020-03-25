@@ -1,5 +1,5 @@
 from django.contrib import admin
-#from userModule.models import Kitchen
+from django.contrib.auth.admin import UserAdmin
+from .models import User
 
-# Register your models here.
-#admin.site.register(Kitchen)
+admin.site.register(User, UserAdmin)
