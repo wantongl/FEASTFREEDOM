@@ -2,7 +2,6 @@
 
 {% block content %}
 <form method="post">{% csrf_token %}
-    {# {{ form.as_p }} #}
     <h1>Register Your Kitchen</h1>
     <br>
     <b>User Name</b><br>
@@ -17,7 +16,11 @@
     {{ form.email }}
     <br>
     <br>
-    <input type="submit" name="cancel" value="Cancel"> <input type="submit" value="Save">
+    <input type="submit" value="Save">
+</form>
+<form method="post">{% csrf_token %}
+    <br>
+    <input type="submit" name="cancel" value="Cancel">
 </form>
 {% endblock content %}
 
