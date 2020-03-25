@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
+    is_provider = models.BooleanField(default=False)
     question1 = models.CharField(blank=False, max_length=30)
     question2 = models.CharField(blank=False, max_length=30)
     answer1 = models.CharField(blank=False, max_length=30)
@@ -11,3 +12,4 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
