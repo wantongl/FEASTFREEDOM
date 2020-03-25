@@ -1,9 +1,15 @@
 {% for field in form %}
 <p>
-  {{ field.label_tag }}
-  <br>
-  {{ field }}
-  <br>
+    {% if field.label == 'Question1' or 'Question2' %}
+        {{ field.label_tag }}
+        {{ field }}
+        <br>
+    {% else %}
+        {{ field.label_tag }}
+        <br>
+        {{ field }}
+    {% endif %}
+    <br>
   {% if field.help_text %}
   <br>
     <small style="color: grey"><br>{{ field.help_text }}</small>
@@ -11,6 +17,7 @@
   <br>
   {% for error in field.errors %}
     <p style="color: red" >{{ error }}</p>
+    <br>
   {% endfor %}
 </p>
 {% endfor %}

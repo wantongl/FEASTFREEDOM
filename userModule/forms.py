@@ -19,14 +19,26 @@ SECURITY_QUESTIONS = (
 
 class RegularUserCreation(UserCreationForm):
     email = forms.EmailField(required=True)
+    question1 = forms.ChoiceField(choices=SECURITY_QUESTIONS)
+    question2 = forms.ChoiceField(choices=SECURITY_QUESTIONS)
+    answer1 = forms.CharField(min_length=1, max_length=20)
+    answer2 = forms.CharField(min_length=1, max_length=20)
+
+    question1.widget.attrs.update({'style': 'font-size:12pt'})
+    question2.widget.attrs.update({'style': 'font-size:12pt'})
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2",'question1','answer1','question2','answer2')
 
     def save(self, commit=True):
         user = super(RegularUserCreation, self).save(commit=False)
         user.email = self.cleaned_data["email"]
+        user.question1 = self.cleaned_data["question1"]
+        user.question2 = self.cleaned_data["question2"]
+        user.answer1 = self.cleaned_data["answer1"]
+        user.answer2 = self.cleaned_data["answer2"]
+
         if commit:
             user.save()
         return user
