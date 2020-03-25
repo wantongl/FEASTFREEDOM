@@ -59,6 +59,9 @@ INSTALLED_APPS = [
 
 ]
 
+# Custom User Model
+AUTH_USER_MODEL = 'userModule.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -140,14 +143,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-LOGIN_REDIRECT_URL = 'myApp:index'
-
-LOGOUT_REDIRECT_URL = 'myApp:index'
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
+
+# Login and Logout Redirect
+LOGIN_REDIRECT_URL = 'myApp:index'
+LOGOUT_REDIRECT_URL = 'myApp:index'
 
 # redis settings
 REDIS_HOST = 'localhost'

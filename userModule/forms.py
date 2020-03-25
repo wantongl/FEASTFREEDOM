@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+from .models import User
 
 SECURITY_QUESTIONS = (
     ('0','What was the house number and street name you lived in as a child?'),
@@ -21,8 +22,8 @@ class RegularUserCreation(UserCreationForm):
     email = forms.EmailField(required=True)
     question1 = forms.ChoiceField(choices=SECURITY_QUESTIONS)
     question2 = forms.ChoiceField(choices=SECURITY_QUESTIONS)
-    answer1 = forms.CharField(min_length=1, max_length=20)
-    answer2 = forms.CharField(min_length=1, max_length=20)
+    answer1 = forms.CharField(min_length=1, max_length=30)
+    answer2 = forms.CharField(min_length=1, max_length=30)
 
     question1.widget.attrs.update({'style': 'font-size:12pt'})
     question2.widget.attrs.update({'style': 'font-size:12pt'})
@@ -36,8 +37,8 @@ class RegularUserCreation(UserCreationForm):
         user.email = self.cleaned_data["email"]
         user.question1 = self.cleaned_data["question1"]
         user.question2 = self.cleaned_data["question2"]
-        user.answer1 = self.cleaned_data["answer1"]
-        user.answer2 = self.cleaned_data["answer2"]
+        user.answer1 = make_password(self.cleaned_data["answer1"])
+        user.answer2 = make_password(self.cleaned_data["answer2"])
 
         if commit:
             user.save()
