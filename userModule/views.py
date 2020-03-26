@@ -56,22 +56,22 @@ class updateMenuItem(UpdateView):
     fields=['name','veg','price']
     template_name = 'userModule/edit_menuItem.html'
 
-    def get_success_url(self):
-        k=Kitchen2Register.objects.latest('id')
-        return reverse('userModule:kitchen_detail', args=(k.id,))
+    #def get_success_url(self):
+    #    k=Kitchen2Register.objects.latest('id')
+    #    return reverse('userModule:kitchen_detail', args=(k.id,))
 
-    success_url = get_success_url
+    success_url = '..' #get_success_url
 
 class deleteMenuItem(DeleteView):
     model=menuItem
     fields=['name','veg','price']
     template_name = 'userModule/delete_menuItem.html'
 
-    def get_success_url(self):
-        k=Kitchen2Register.objects.latest('id')
-        return reverse('userModule:kitchen_detail', args=(k.id,))
+    #def get_success_url(self):
+    #    k=Kitchen2Register.objects.latest('id')
+    #    return reverse('userModule:kitchen_detail', args=(k.id,))
 
-    success_url = get_success_url
+    success_url = '..' #get_success_url
 
 class createKitchen(CreateView):
 #class createKitchen(UpdateView):
@@ -114,6 +114,13 @@ class updateRegisteredKitchen(UpdateView):
             return super(updateRegisteredKitchen, self).post(request, *args, **kwargs)
 
     success_url = get_success_url
+
+class deleteRegisteredKitchen(DeleteView):
+    model=Kitchen2Register
+    fields=['name','email','image','description','menu','monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondayStartTime','mondayEndTime','tuesdayStartTime','tuesdayEndTime','wednesdayStartTime','wednesdayEndTime','thursdayStartTime','thursdayEndTime','fridayStartTime','fridayEndTime','saturdayStartTime','saturdayEndTime','sundayStartTime','sundayEndTime']
+    template_name = 'serviceProviderApp/kitchenDelete.html'
+
+    success_url = '..'
 
 @login_required
 def logout(request):

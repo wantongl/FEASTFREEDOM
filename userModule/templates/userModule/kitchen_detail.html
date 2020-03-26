@@ -14,7 +14,8 @@
         </form>
         {% if user == kitchen.username %}
             {% url 'userModule:updateRegisteredKitchen' pk=kitchen.id as kit_edit_url %}
-            <h1>{{ kitchen.name }} <a href="{{ kit_edit_url }}">Edit</a></h1>
+            {% url 'userModule:deleteRegisteredKitchen' pk=kitchen.id as kit_del_url %}
+            <h1>{{ kitchen.name }} (<a href="{{ kit_edit_url }}" style="color:red">Edit</a>) (<a href="{{ kit_del_url }}" style="color:red">Delete</a>)</h1>
         {% else %}
             <h1>{{ kitchen.name }}</h1>
         {% endif %}
@@ -25,7 +26,7 @@
             {% if user == kitchen.username %}
                 {% url 'userModule:editMenuItem' pk=m.id as edit_url %}
                 {% url 'userModule:deleteMenuItem' pk=m.id as del_url %}
-                <a href="{{ edit_url }}">Edit</a> <a href="{{ del_url }}">Delete</a><br>
+                <a href="{{ edit_url }}" style="color:red">Edit</a> || <a href="{{ del_url }}" style="color:red">Delete</a><br>
             {% endif %}
             <b>{{ m.name }}</b> || <span style="color:blue">${{ m.price }}</span>
             {% if m.veg %}

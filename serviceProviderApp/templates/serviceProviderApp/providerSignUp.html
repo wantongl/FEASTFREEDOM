@@ -3,7 +3,7 @@
 {% block content %}
 <form method="post">{% csrf_token %}
     <br>
-    <input type="submit" name="return" value="Returning User?">
+    <input type="submit" name="return" value="Returning Kitchen Provider?">
     <input name="next" type="hidden" value="{% url 'serviceProviderApp:kitchenCreate' %}">
 </form>
 
