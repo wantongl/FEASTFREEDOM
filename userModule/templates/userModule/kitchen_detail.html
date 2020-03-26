@@ -17,7 +17,7 @@
         <h1>Menu</h1><br>
         {# <img src="{% if kitchen.image %}{{ kitchen.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> #}
         {% for m in kitchen.menu.all %}
-            {% if user.is_authenticated %}
+            {% if user == kitchen.username %}
                 {% url 'userModule:editMenuItem' pk=m.id as the_url %}
                 <a href="{{ the_url }}">Edit</a><br>
             {% endif %}
