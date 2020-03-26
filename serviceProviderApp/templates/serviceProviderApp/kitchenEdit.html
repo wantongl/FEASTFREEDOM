@@ -1,0 +1,49 @@
+{% extends 'serviceProviderApp/base.html' %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {# {{ form.as_p }} #}
+    <h1>Edit Your Kitchen's Details</h1>
+    <br>
+    <b>Kitchen Name</b><br>
+    {{ form.name }}
+    <br>
+    <br>
+    <b>Kitchen Email</b><br>
+    {{ form.email }}
+    <br>
+    <br>
+    <b>Kitchen Image</b><br>
+    {{ form.image }}
+    <br>
+    <br>
+    <b>Description of Kitchen</b><br>
+    {{ form.description }}
+    <br>
+    <br>
+    <b>Kitchen Menu</b><br>
+    {% url 'serviceProviderApp:createMenuItem' as the_url %}
+    {{ form.menu }} <a href="{{ the_url }}">Add Menu Item</a>
+    <br>
+    <br>
+    <b>Hours of Operation</b><br><br>
+    <b>&nbsp&nbsp&nbsp&nbsp&nbspDay&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStart Time&nbsp&nbspEnd Time</b><br>
+    <hr>
+    Monday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.monday }}&nbsp{{ form.mondayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.mondayEndTime }}<br>
+    <hr>
+    Tuesday&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.tuesday }} {{ form.tuesdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.tuesdayEndTime }}<br>
+    <hr>
+    Wednesday{{ form.wednesday }} {{ form.wednesdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.wednesdayEndTime }}<br>
+    <hr>
+    Thursday&nbsp&nbsp&nbsp{{ form.thursday }} {{ form.thursdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.thursdayEndTime }}<br>
+    <hr>
+    Friday&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.friday }} {{ form.fridayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.fridayEndTime }}<br>
+    <hr>
+    Saturday&nbsp&nbsp&nbsp{{ form.saturday }} {{ form.saturdayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.saturdayEndTime }}<br>
+    <hr>
+    Sunday&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.sunday }} {{ form.sundayStartTime }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ form.sundayEndTime }}<br>
+    <hr>
+    <input type="submit" name="cancel" value="Cancel"> <input type="submit" value="Save">
+</form>
+{% endblock content %}
+

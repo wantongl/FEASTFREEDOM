@@ -3,7 +3,7 @@ from django.shortcuts import render,get_object_or_404, redirect
 from django.urls import reverse
 from serviceProviderApp.models import Kitchen2Register,menuItem
 from cart.forms import CartAddProductForm
-from django.views.generic.edit import CreateView,UpdateView
+from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -62,6 +62,17 @@ class updateMenuItem(UpdateView):
 
     success_url = get_success_url
 
+class deleteMenuItem(DeleteView):
+    model=menuItem
+    fields=['name','veg','price']
+    template_name = 'userModule/delete_menuItem.html'
+
+    def get_success_url(self):
+        k=Kitchen2Register.objects.latest('id')
+        return reverse('userModule:kitchen_detail', args=(k.id,))
+
+    success_url = get_success_url
+
 class createKitchen(CreateView):
 #class createKitchen(UpdateView):
     model=Kitchen2Register
@@ -86,6 +97,23 @@ class createKitchen(CreateView):
 
     success_url = get_success_url
 
+class updateRegisteredKitchen(UpdateView):
+    model=Kitchen2Register
+    fields=['name','email','image','description','menu','monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondayStartTime','mondayEndTime','tuesdayStartTime','tuesdayEndTime','wednesdayStartTime','wednesdayEndTime','thursdayStartTime','thursdayEndTime','fridayStartTime','fridayEndTime','saturdayStartTime','saturdayEndTime','sundayStartTime','sundayEndTime']
+    template_name = 'serviceProviderApp/kitchenEdit.html'
+
+    def get_success_url(self):
+        k=Kitchen2Register.objects.latest('id')
+        return reverse('userModule:kitchen_detail', args=(k.id,))
+
+    def post(self, request, *args, **kwargs):
+        if "cancel" in request.POST:
+            url = '..' #self.get_success_url()
+            return HttpResponseRedirect(url)
+        else:
+            return super(updateRegisteredKitchen, self).post(request, *args, **kwargs)
+
+    success_url = get_success_url
 
 @login_required
 def logout(request):

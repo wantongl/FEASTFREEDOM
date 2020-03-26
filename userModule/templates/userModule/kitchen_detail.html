@@ -12,14 +12,20 @@
             <input type="submit" name="cancel" value="Return to Kitchens">
             <input name="next" type="hidden" value="{% url 'userModule:kitchen_list' %}">
         </form>
-        <h1>{{ kitchen.name }}</h1>
+        {% if user == kitchen.username %}
+            {% url 'userModule:updateRegisteredKitchen' pk=kitchen.id as kit_edit_url %}
+            <h1>{{ kitchen.name }} <a href="{{ kit_edit_url }}">Edit</a></h1>
+        {% else %}
+            <h1>{{ kitchen.name }}</h1>
+        {% endif %}
         {{ kitchen.description|linebreaks }}<br>
         <h1>Menu</h1><br>
         {# <img src="{% if kitchen.image %}{{ kitchen.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> #}
         {% for m in kitchen.menu.all %}
             {% if user == kitchen.username %}
-                {% url 'userModule:editMenuItem' pk=m.id as the_url %}
-                <a href="{{ the_url }}">Edit</a><br>
+                {% url 'userModule:editMenuItem' pk=m.id as edit_url %}
+                {% url 'userModule:deleteMenuItem' pk=m.id as del_url %}
+                <a href="{{ edit_url }}">Edit</a> <a href="{{ del_url }}">Delete</a><br>
             {% endif %}
             <b>{{ m.name }}</b> || <span style="color:blue">${{ m.price }}</span>
             {% if m.veg %}
