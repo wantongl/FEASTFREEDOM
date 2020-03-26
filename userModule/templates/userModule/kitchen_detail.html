@@ -16,9 +16,9 @@
         {{ kitchen.description|linebreaks }}<br>
         <h1>Menu</h1><br>
         {# <img src="{% if kitchen.image %}{{ kitchen.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> #}
-        {% url 'serviceProviderApp:createMenuItem' as the_url %}
         {% for m in kitchen.menu.all %}
             {% if user.is_authenticated %}
+                {% url 'userModule:editMenuItem' pk=m.id as the_url %}
                 <a href="{{ the_url }}">Edit</a><br>
             {% endif %}
             <b>{{ m.name }}</b> || <span style="color:blue">${{ m.price }}</span>
