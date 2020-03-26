@@ -14,7 +14,8 @@
     <br>
     <br>
     <b>Kitchen Menu</b><br>
-    {{ form.menu }} <a href="createMenuItem">Add Menu Item</a>
+    {% url 'serviceProviderApp:createMenuItem' as the_url %}
+    {{ form.menu }} <a href="{{ the_url }}">Add Menu Item</a>
     <br>
     <br>
     <b>Hours of Operation</b><br><br>

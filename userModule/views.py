@@ -43,11 +43,22 @@ def kitchen_detail(request, id):
 class createMenuItem(CreateView):
     model=menuItem
     fields=['name','veg','price']
-    template_name = 'userModule/../serviceProviderApp/templates/serviceProviderApp/create_menuItem.html'
+    template_name = 'userModule/create_menuItem.html'
 
     def get_success_url(self):
         k=Kitchen2Register.objects.latest('id')
         return reverse('serviceProviderApp:kitchenUpdate', args=(k.id,))
+
+    success_url = get_success_url
+
+class updateMenuItem(UpdateView):
+    model=menuItem
+    fields=['name','veg','price']
+    template_name = 'userModule/edit_menuItem.html'
+
+    def get_success_url(self):
+        k=Kitchen2Register.objects.latest('id')
+        return reverse('userModule:kitchen_detail', args=(k.id,))
 
     success_url = get_success_url
 
