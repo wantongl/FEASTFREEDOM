@@ -1,23 +1,31 @@
 {% extends 'serviceProviderApp/base.html' %}
 
 {% block content %}
-<form method="post">{% csrf_token %}
-    <h1>Register Your Kitchen</h1>
-    <br>
-    <b>User Name</b><br>
-    {{ form.username }}
-    <br>
-    <br>
-    <b>Kitchen Name</b><br>
-    {{ form.name }}
-    <br>
-    <br>
-    <b>Kitchen Email</b><br>
-    {{ form.email }}
-    <br>
-    <br>
-    <input type="submit" value="Save">
-</form>
+<h1>Register Your Kitchen</h1>
+<br>
+{% if user.is_authenticated %}
+    <form method="post">{% csrf_token %}
+        <b>User Name</b><br>
+        {# {{ form.username }} #}
+        {{ user }}
+        <br>
+        <br>
+        <b>Kitchen Name</b><br>
+        {{ form.name }}
+        <br>
+        <br>
+        <b>Kitchen Email</b><br>
+        {{ form.email }}
+        <br>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+{% else %}
+    You must login with an account to register a kitchen.<br><br>
+    Please select one of the following options:<br>
+    <a href="{% url 'userModule:login' %}">Login | </a>
+    <a href="{% url 'userModule:signup' %}">Signup</a>
+{% endif %}
 <form method="post">{% csrf_token %}
     <br>
     <input type="submit" name="cancel" value="Cancel">

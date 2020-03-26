@@ -48,6 +48,9 @@ class KitchenUpdate(UpdateView):
             url = '../create' #self.get_success_url()
             return HttpResponseRedirect(url)
         else:
+            k = Kitchen2Register.objects.latest('id')
+            setattr(k, 'username', request.user)
+            k.save()
             return super(KitchenUpdate, self).post(request, *args, **kwargs)
             #return HttpResponse("Success!")
             #k = Kitchen2Register.objects.all()  # filter(available=True)

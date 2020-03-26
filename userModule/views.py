@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from userModule.forms import RegularUserCreation
 from cart.cart import Cart
 from django.http import HttpResponseRedirect,HttpResponse
+from userModule.get_username import get_username
 
 # Create your views here.
 def kitchen_list(request):
@@ -77,23 +78,38 @@ class createKitchen(CreateView):
 #class createKitchen(UpdateView):
     model=Kitchen2Register
     #fields=['name','email','image','description','menu','monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondayStartTime','mondayEndTime','tuesdayStartTime','tuesdayEndTime','wednesdayStartTime','wednesdayEndTime','thursdayStartTime','thursdayEndTime','fridayStartTime','fridayEndTime','saturdayStartTime','saturdayEndTime','sundayStartTime','sundayEndTime']
-    fields=['username','name','email']
+    #fields=['username','name','email']
+    fields=['name','email']
     template_name = 'serviceProviderApp/kitchenCreate.html'
 
     def get_success_url(self):
         #print(self.object.id)
+        #k = Kitchen2Register.objects.latest('id')
+        #setattr(self.object, 'username', request.user)
+        #k.save()
+        #req=get_username()
+        #setattr(self, 'username', req.user)
+        #self.save()
+        #print(req.user)
         return reverse('serviceProviderApp:kitchenUpdate', args=(self.object.id,))
 
     def post(self, request, *args, **kwargs):
-        #   self.object=self.get_object(id=args)
+        #self.object=self.get_object(id=args)
         if "cancel" in request.POST:
             url = '..' #self.get_success_url()
             return HttpResponseRedirect(url)
         else:
+            #setattr(self.object, 'username', request.user)
+            #self.object.save()
             return super(createKitchen, self).post(request, *args, **kwargs)
             #return HttpResponse("Success!")
             #url = self.get_success_url()#reverse('serviceProviderApp:kitchenUpdate', args=(self.object.id,))
             #return HttpResponseRedirect(url)
+
+    #def save(self,*args,**kwargs):
+    #    req = get_username()
+    #    setattr(self, 'username', req.user)
+    #    self.save()
 
     success_url = get_success_url
 

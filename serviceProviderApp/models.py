@@ -12,8 +12,8 @@ class menuItem(models.Model):
         return self.name
 
 class Kitchen2Register(models.Model):
-    username=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
-    #username = models.ForeignKey(User,on_delete=models.CASCADE)
+    #username=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    username = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=200, db_index=True)
     email=models.CharField(max_length=50)
     image = models.ImageField(upload_to='kitchens/',blank=True)
