@@ -10,11 +10,11 @@
 
     <div id="header">
         <a href="/" class="logo"><u><span style="color:red">FEAST</span><span style="color:blue">FREEDOM</span></u><br><b>Feast</b> like a <b>Beast</b></a>
-        <a href="{% url 'serviceProviderApp:providersignup' %}" class="serviceProvider">Provider Register Now | </a>
         {% if user.is_authenticated %}
             <a href="{% url 'userModule:logout' %}">Logout | </a>
             You Are Logged in as: {{ user.username }}
         {% else %}
+            <a href="{% url 'serviceProviderApp:providersignup' %}" class="serviceProvider">Provider Register Now | </a>
             <a href="{% url 'userModule:login' %}">Login | </a>
             <a href="{% url 'userModule:signup' %}">Signup</a>
         {% endif %}
